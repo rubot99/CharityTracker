@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1de724508f56441dae3109f624347391" Name="Diagram1">
+        <EntityTypeShape EntityType="CharityTrackerModel.Activity" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.ActivityType" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.Application" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.Membership" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.Office" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.Profile" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.Role" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.User" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.UsersOpenAuthAccount" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.UsersOpenAuthData" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.vwActivity" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.vwActivitiesByType" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.vwActivitiesByUser" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.vwGetUser" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="CharityTrackerModel.MembershipEntity_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="CharityTrackerModel.RoleEntity_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="CharityTrackerModel.User_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="CharityTrackerModel.MembershipEntity_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CharityTrackerModel.ProfileEntity_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CharityTrackerModel.OpenAuthUserData_Accounts" ManuallyRouted="false" />
+        <AssociationConnector Association="CharityTrackerModel.UsersInRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
