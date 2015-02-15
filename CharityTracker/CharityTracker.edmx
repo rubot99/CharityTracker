@@ -25,38 +25,6 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="LastUpdated" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Applications">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ApplicationName" Type="nvarchar" MaxLength="235" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="256" />
-        </EntityType>
-        <EntityType Name="Memberships">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="PasswordFormat" Type="int" Nullable="false" />
-          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="256" />
-          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
-          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
-          <Property Name="IsApproved" Type="bit" Nullable="false" />
-          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
-          <Property Name="CreateDate" Type="datetime" Nullable="false" />
-          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
-          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
-          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
-          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
-          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
-          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
-          <Property Name="FailedPasswordAnswerAttemptWindowsStart" Type="datetime" Nullable="false" />
-          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
-        </EntityType>
         <EntityType Name="Offices">
           <Key>
             <PropertyRef Name="Id" />
@@ -69,65 +37,6 @@
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="LastUpdated" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Profiles">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="PropertyNames" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="PropertyValueStrings" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="PropertyValueBinary" Type="varbinary(max)" Nullable="false" />
-          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Roles">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="256" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
-          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UsersInRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="UsersOpenAuthAccounts">
-          <Key>
-            <PropertyRef Name="ApplicationName" />
-            <PropertyRef Name="ProviderName" />
-            <PropertyRef Name="ProviderUserId" />
-          </Key>
-          <Property Name="ApplicationName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ProviderName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ProviderUserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="ProviderUserName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="MembershipUserName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="LastUsedUtc" Type="datetime" />
-        </EntityType>
-        <EntityType Name="UsersOpenAuthData">
-          <Key>
-            <PropertyRef Name="ApplicationName" />
-            <PropertyRef Name="MembershipUserName" />
-          </Key>
-          <Property Name="ApplicationName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="MembershipUserName" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="HasLocalPassword" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CharityTracker.dbo.vwActivities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -184,118 +93,10 @@ warning 6002: The table/view 'CharityTracker.dbo.vwGetUsers' does not have a pri
           <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
         </EntityType>
-        <Association Name="MembershipEntity_Application">
-          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
-          <End Role="Memberships" Type="Self.Memberships" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Applications">
-              <PropertyRef Name="ApplicationId" />
-            </Principal>
-            <Dependent Role="Memberships">
-              <PropertyRef Name="ApplicationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="MembershipEntity_User">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Memberships" Type="Self.Memberships" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Memberships">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="OpenAuthUserData_Accounts">
-          <End Role="UsersOpenAuthData" Type="Self.UsersOpenAuthData" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="UsersOpenAuthAccounts" Type="Self.UsersOpenAuthAccounts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersOpenAuthData">
-              <PropertyRef Name="ApplicationName" />
-              <PropertyRef Name="MembershipUserName" />
-            </Principal>
-            <Dependent Role="UsersOpenAuthAccounts">
-              <PropertyRef Name="ApplicationName" />
-              <PropertyRef Name="MembershipUserName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ProfileEntity_User">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Profiles">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="RoleEntity_Application">
-          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
-          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Applications">
-              <PropertyRef Name="ApplicationId" />
-            </Principal>
-            <Dependent Role="Roles">
-              <PropertyRef Name="ApplicationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="User_Application">
-          <End Role="Applications" Type="Self.Applications" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Applications">
-              <PropertyRef Name="ApplicationId" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="ApplicationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UsersInRole_Role">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="UsersInRoles">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UsersInRole_User">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="UsersInRoles" Type="Self.UsersInRoles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UsersInRoles">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="CharityTrackerModelStoreContainer">
           <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ActivityTypes" EntityType="Self.ActivityTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Memberships" EntityType="Self.Memberships" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRoles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccounts" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UsersOpenAuthData" EntityType="Self.UsersOpenAuthData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vwActivities" EntityType="Self.vwActivities" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [vwActivities].[RowNumber] AS [RowNumber], 
@@ -330,39 +131,7 @@ FROM [dbo].[vwActivitiesByUser] AS [vwActivitiesByUser]</DefiningQuery>
 [vwGetUsers].[LastActivityDate] AS [LastActivityDate]
 FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="MembershipEntity_Application" Association="Self.MembershipEntity_Application">
-            <End Role="Applications" EntitySet="Applications" />
-            <End Role="Memberships" EntitySet="Memberships" />
-          </AssociationSet>
-          <AssociationSet Name="MembershipEntity_User" Association="Self.MembershipEntity_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Memberships" EntitySet="Memberships" />
-          </AssociationSet>
-          <AssociationSet Name="OpenAuthUserData_Accounts" Association="Self.OpenAuthUserData_Accounts">
-            <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthData" />
-            <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
-          </AssociationSet>
-          <AssociationSet Name="ProfileEntity_User" Association="Self.ProfileEntity_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Profiles" EntitySet="Profiles" />
-          </AssociationSet>
-          <AssociationSet Name="RoleEntity_Application" Association="Self.RoleEntity_Application">
-            <End Role="Applications" EntitySet="Applications" />
-            <End Role="Roles" EntitySet="Roles" />
-          </AssociationSet>
-          <AssociationSet Name="User_Application" Association="Self.User_Application">
-            <End Role="Applications" EntitySet="Applications" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="UsersInRole_Role" Association="Self.UsersInRole_Role">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
-          </AssociationSet>
-          <AssociationSet Name="UsersInRole_User" Association="Self.UsersInRole_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UsersInRoles" EntitySet="UsersInRoles" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
@@ -388,43 +157,6 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="Application">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="ApplicationName" Type="String" MaxLength="235" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Memberships" Relationship="Self.MembershipEntity_Application" FromRole="Applications" ToRole="Memberships" />
-          <NavigationProperty Name="Roles" Relationship="Self.RoleEntity_Application" FromRole="Applications" ToRole="Roles" />
-          <NavigationProperty Name="Users" Relationship="Self.User_Application" FromRole="Applications" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Membership">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
-          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
-          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
-          <Property Name="FailedPasswordAnswerAttemptWindowsStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Application" Relationship="Self.MembershipEntity_Application" FromRole="Memberships" ToRole="Applications" />
-          <NavigationProperty Name="User" Relationship="Self.MembershipEntity_User" FromRole="Memberships" ToRole="Users" />
-        </EntityType>
         <EntityType Name="Office">
           <Key>
             <PropertyRef Name="Id" />
@@ -437,66 +169,6 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Profile">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="PropertyNames" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PropertyValueStrings" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PropertyValueBinary" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.ProfileEntity_User" FromRole="Profiles" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Role">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Application" Relationship="Self.RoleEntity_Application" FromRole="Roles" ToRole="Applications" />
-          <NavigationProperty Name="Users" Relationship="Self.UsersInRoles" FromRole="Roles" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Application" Relationship="Self.User_Application" FromRole="Users" ToRole="Applications" />
-          <NavigationProperty Name="Membership" Relationship="Self.MembershipEntity_User" FromRole="Users" ToRole="Memberships" />
-          <NavigationProperty Name="Profile" Relationship="Self.ProfileEntity_User" FromRole="Users" ToRole="Profiles" />
-          <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
-        </EntityType>
-        <EntityType Name="UsersOpenAuthAccount">
-          <Key>
-            <PropertyRef Name="ApplicationName" />
-            <PropertyRef Name="ProviderName" />
-            <PropertyRef Name="ProviderUserId" />
-          </Key>
-          <Property Name="ApplicationName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MembershipUserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastUsedUtc" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="UsersOpenAuthData" Relationship="Self.OpenAuthUserData_Accounts" FromRole="UsersOpenAuthAccounts" ToRole="UsersOpenAuthData" />
-        </EntityType>
-        <EntityType Name="UsersOpenAuthData">
-          <Key>
-            <PropertyRef Name="ApplicationName" />
-            <PropertyRef Name="MembershipUserName" />
-          </Key>
-          <Property Name="ApplicationName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MembershipUserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="HasLocalPassword" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="UsersOpenAuthAccounts" Relationship="Self.OpenAuthUserData_Accounts" FromRole="UsersOpenAuthData" ToRole="UsersOpenAuthAccounts" />
         </EntityType>
         <EntityType Name="vwActivity">
           <Key>
@@ -545,130 +217,15 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <Association Name="MembershipEntity_Application">
-          <End Role="Applications" Type="Self.Application" Multiplicity="1" />
-          <End Role="Memberships" Type="Self.Membership" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Applications">
-              <PropertyRef Name="ApplicationId" />
-            </Principal>
-            <Dependent Role="Memberships">
-              <PropertyRef Name="ApplicationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="RoleEntity_Application">
-          <End Role="Applications" Type="Self.Application" Multiplicity="1" />
-          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Applications">
-              <PropertyRef Name="ApplicationId" />
-            </Principal>
-            <Dependent Role="Roles">
-              <PropertyRef Name="ApplicationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="User_Application">
-          <End Role="Applications" Type="Self.Application" Multiplicity="1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Applications">
-              <PropertyRef Name="ApplicationId" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="ApplicationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="MembershipEntity_User">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Memberships" Type="Self.Membership" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Memberships">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ProfileEntity_User">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="Profiles" Type="Self.Profile" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Profiles">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="OpenAuthUserData_Accounts">
-          <End Role="UsersOpenAuthData" Type="Self.UsersOpenAuthData" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="UsersOpenAuthAccounts" Type="Self.UsersOpenAuthAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersOpenAuthData">
-              <PropertyRef Name="ApplicationName" />
-              <PropertyRef Name="MembershipUserName" />
-            </Principal>
-            <Dependent Role="UsersOpenAuthAccounts">
-              <PropertyRef Name="ApplicationName" />
-              <PropertyRef Name="MembershipUserName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="UsersInRoles">
-          <End Role="Roles" Type="Self.Role" Multiplicity="*" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="CharityTrackerEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activities" EntityType="Self.Activity" />
           <EntitySet Name="ActivityTypes" EntityType="Self.ActivityType" />
-          <EntitySet Name="Applications" EntityType="Self.Application" />
-          <EntitySet Name="Memberships" EntityType="Self.Membership" />
           <EntitySet Name="Offices" EntityType="Self.Office" />
-          <EntitySet Name="Profiles" EntityType="Self.Profile" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="UsersOpenAuthAccounts" EntityType="Self.UsersOpenAuthAccount" />
-          <EntitySet Name="UsersOpenAuthDatas" EntityType="Self.UsersOpenAuthData" />
           <EntitySet Name="vwActivities" EntityType="Self.vwActivity" />
           <EntitySet Name="vwActivitiesByTypes" EntityType="Self.vwActivitiesByType" />
           <EntitySet Name="vwActivitiesByUsers" EntityType="Self.vwActivitiesByUser" />
           <EntitySet Name="vwGetUsers" EntityType="Self.vwGetUser" />
-          <AssociationSet Name="MembershipEntity_Application" Association="Self.MembershipEntity_Application">
-            <End Role="Applications" EntitySet="Applications" />
-            <End Role="Memberships" EntitySet="Memberships" />
-          </AssociationSet>
-          <AssociationSet Name="RoleEntity_Application" Association="Self.RoleEntity_Application">
-            <End Role="Applications" EntitySet="Applications" />
-            <End Role="Roles" EntitySet="Roles" />
-          </AssociationSet>
-          <AssociationSet Name="User_Application" Association="Self.User_Application">
-            <End Role="Applications" EntitySet="Applications" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="MembershipEntity_User" Association="Self.MembershipEntity_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Memberships" EntitySet="Memberships" />
-          </AssociationSet>
-          <AssociationSet Name="ProfileEntity_User" Association="Self.ProfileEntity_User">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Profiles" EntitySet="Profiles" />
-          </AssociationSet>
-          <AssociationSet Name="OpenAuthUserData_Accounts" Association="Self.OpenAuthUserData_Accounts">
-            <End Role="UsersOpenAuthData" EntitySet="UsersOpenAuthDatas" />
-            <End Role="UsersOpenAuthAccounts" EntitySet="UsersOpenAuthAccounts" />
-          </AssociationSet>
-          <AssociationSet Name="UsersInRoles" Association="Self.UsersInRoles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -697,40 +254,6 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Applications">
-            <EntityTypeMapping TypeName="CharityTrackerModel.Application">
-              <MappingFragment StoreEntitySet="Applications">
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Memberships">
-            <EntityTypeMapping TypeName="CharityTrackerModel.Membership">
-              <MappingFragment StoreEntitySet="Memberships">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
-                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
-                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
-                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
-                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
-                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowsStart" ColumnName="FailedPasswordAnswerAttemptWindowsStart" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Offices">
             <EntityTypeMapping TypeName="CharityTrackerModel.Office">
               <MappingFragment StoreEntitySet="Offices">
@@ -742,59 +265,6 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
                 <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Profiles">
-            <EntityTypeMapping TypeName="CharityTrackerModel.Profile">
-              <MappingFragment StoreEntitySet="Profiles">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
-                <ScalarProperty Name="PropertyValueStrings" ColumnName="PropertyValueStrings" />
-                <ScalarProperty Name="PropertyValueBinary" ColumnName="PropertyValueBinary" />
-                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="CharityTrackerModel.Role">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="CharityTrackerModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsersOpenAuthAccounts">
-            <EntityTypeMapping TypeName="CharityTrackerModel.UsersOpenAuthAccount">
-              <MappingFragment StoreEntitySet="UsersOpenAuthAccounts">
-                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
-                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
-                <ScalarProperty Name="ProviderUserName" ColumnName="ProviderUserName" />
-                <ScalarProperty Name="MembershipUserName" ColumnName="MembershipUserName" />
-                <ScalarProperty Name="LastUsedUtc" ColumnName="LastUsedUtc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsersOpenAuthDatas">
-            <EntityTypeMapping TypeName="CharityTrackerModel.UsersOpenAuthData">
-              <MappingFragment StoreEntitySet="UsersOpenAuthData">
-                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-                <ScalarProperty Name="MembershipUserName" ColumnName="MembershipUserName" />
-                <ScalarProperty Name="HasLocalPassword" ColumnName="HasLocalPassword" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -840,14 +310,6 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="UsersInRoles" TypeName="CharityTrackerModel.UsersInRoles" StoreEntitySet="UsersInRoles">
-            <EndProperty Name="Roles">
-              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="Users">
-              <ScalarProperty Name="UserId" ColumnName="UserId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

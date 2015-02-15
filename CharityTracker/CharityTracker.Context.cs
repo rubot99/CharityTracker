@@ -27,14 +27,7 @@ namespace CharityTracker
     
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityType> ActivityTypes { get; set; }
-        public DbSet<Application> Applications { get; set; }
-        public DbSet<Membership> Memberships { get; set; }
         public DbSet<Office> Offices { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<UsersOpenAuthAccount> UsersOpenAuthAccounts { get; set; }
-        public DbSet<UsersOpenAuthData> UsersOpenAuthDatas { get; set; }
         public DbSet<vwActivity> vwActivities { get; set; }
         public DbSet<vwActivitiesByType> vwActivitiesByTypes { get; set; }
         public DbSet<vwActivitiesByUser> vwActivitiesByUsers { get; set; }

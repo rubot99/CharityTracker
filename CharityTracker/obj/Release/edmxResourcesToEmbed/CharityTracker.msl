@@ -23,40 +23,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Applications">
-      <EntityTypeMapping TypeName="CharityTrackerModel.Application">
-        <MappingFragment StoreEntitySet="Applications">
-          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Memberships">
-      <EntityTypeMapping TypeName="CharityTrackerModel.Membership">
-        <MappingFragment StoreEntitySet="Memberships">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
-          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
-          <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
-          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-          <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-          <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-          <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
-          <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
-          <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
-          <ScalarProperty Name="FailedPasswordAnswerAttemptWindowsStart" ColumnName="FailedPasswordAnswerAttemptWindowsStart" />
-          <ScalarProperty Name="Comment" ColumnName="Comment" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Offices">
       <EntityTypeMapping TypeName="CharityTrackerModel.Office">
         <MappingFragment StoreEntitySet="Offices">
@@ -68,59 +34,6 @@
           <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Profiles">
-      <EntityTypeMapping TypeName="CharityTrackerModel.Profile">
-        <MappingFragment StoreEntitySet="Profiles">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
-          <ScalarProperty Name="PropertyValueStrings" ColumnName="PropertyValueStrings" />
-          <ScalarProperty Name="PropertyValueBinary" ColumnName="PropertyValueBinary" />
-          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="CharityTrackerModel.Role">
-        <MappingFragment StoreEntitySet="Roles">
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="CharityTrackerModel.User">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
-          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UsersOpenAuthAccounts">
-      <EntityTypeMapping TypeName="CharityTrackerModel.UsersOpenAuthAccount">
-        <MappingFragment StoreEntitySet="UsersOpenAuthAccounts">
-          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-          <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
-          <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
-          <ScalarProperty Name="ProviderUserName" ColumnName="ProviderUserName" />
-          <ScalarProperty Name="MembershipUserName" ColumnName="MembershipUserName" />
-          <ScalarProperty Name="LastUsedUtc" ColumnName="LastUsedUtc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UsersOpenAuthDatas">
-      <EntityTypeMapping TypeName="CharityTrackerModel.UsersOpenAuthData">
-        <MappingFragment StoreEntitySet="UsersOpenAuthData">
-          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-          <ScalarProperty Name="MembershipUserName" ColumnName="MembershipUserName" />
-          <ScalarProperty Name="HasLocalPassword" ColumnName="HasLocalPassword" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -166,13 +79,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="UsersInRoles" TypeName="CharityTrackerModel.UsersInRoles" StoreEntitySet="UsersInRoles">
-      <EndProperty Name="Roles">
-        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-      </EndProperty>
-      <EndProperty Name="Users">
-        <ScalarProperty Name="UserId" ColumnName="UserId" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -654,7 +654,7 @@
     <Content Include="assets\js\plugins\typehead\typeahead.bundle.js" />
     <Content Include="assets\js\plugins\underscore\underscore-min.js" />
     <Content Include="Default.aspx" />
-    <Content Include="User\YourActivities.aspx" />
+    <Content Include="Users\YourActivities.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -670,9 +670,6 @@
     </Compile>
     <Compile Include="Admin\AddUsers.aspx.designer.cs">
       <DependentUpon>AddUsers.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Application.cs">
-      <DependentUpon>CharityTracker.tt</DependentUpon>
     </Compile>
     <Compile Include="CharityTracker.Context.cs">
       <AutoGen>True</AutoGen>
@@ -696,19 +693,10 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Membership.cs">
-      <DependentUpon>CharityTracker.tt</DependentUpon>
-    </Compile>
     <Compile Include="Office.cs">
       <DependentUpon>CharityTracker.tt</DependentUpon>
     </Compile>
-    <Compile Include="Profile.cs">
-      <DependentUpon>CharityTracker.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs">
-      <DependentUpon>CharityTracker.tt</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -717,20 +705,11 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="TrackerFacade.cs" />
-    <Compile Include="User.cs">
-      <DependentUpon>CharityTracker.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsersOpenAuthAccount.cs">
-      <DependentUpon>CharityTracker.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsersOpenAuthData.cs">
-      <DependentUpon>CharityTracker.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User\YourActivities.aspx.cs">
+    <Compile Include="Users\YourActivities.aspx.cs">
       <DependentUpon>YourActivities.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="User\YourActivities.aspx.designer.cs">
+    <Compile Include="Users\YourActivities.aspx.designer.cs">
       <DependentUpon>YourActivities.aspx</DependentUpon>
     </Compile>
     <Compile Include="vwActivitiesByType.cs">
