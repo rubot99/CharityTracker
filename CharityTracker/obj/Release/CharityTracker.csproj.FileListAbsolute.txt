@@ -1,0 +1,6 @@
+D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\CharityTracker.dll.config
+D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\CharityTracker.dll
+D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\CharityTracker.pdb
+D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\obj\Release\CharityTracker.csprojResolveAssemblyReference.cache
+D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\obj\Release\CharityTracker.dll
+D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\obj\Release\CharityTracker.pdb
