@@ -39,8 +39,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -649,6 +656,30 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activity.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ActivityType.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Application.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CharityTracker.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CharityTracker.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CharityTracker.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CharityTracker.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CharityTracker.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -656,13 +687,47 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Membership.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Office.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TrackerFacade.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersOpenAuthAccount.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersOpenAuthData.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwActivitiesByType.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwActivitiesByUser.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwActivity.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vwGetUser.cs">
+      <DependentUpon>CharityTracker.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -755,6 +820,24 @@
     <Content Include="assets\less\plugins\bootstrap-datetimepicker\bootstrap-datetimepicker.less" />
     <Content Include="assets\less\plugins\bootstrap-tagsinput\bootstrap-tagsinput.less" />
     <Content Include="assets\less\plugins\typeahead\typeahead.less" />
+    <EntityDeploy Include="CharityTracker.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CharityTracker.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="CharityTracker.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CharityTracker.edmx</DependentUpon>
+      <LastGenOutput>CharityTracker.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CharityTracker.edmx.diagram">
+      <DependentUpon>CharityTracker.edmx</DependentUpon>
+    </Content>
+    <Content Include="CharityTracker.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CharityTracker.edmx</DependentUpon>
+      <LastGenOutput>CharityTracker.cs</LastGenOutput>
+    </Content>
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\CharityTracker.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -766,6 +849,9 @@
   <ItemGroup>
     <Folder Include="assets\images\bg\" />
     <Folder Include="assets\js\plugins\filebrowser\demo-files\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

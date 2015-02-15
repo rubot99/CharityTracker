@@ -4,3 +4,5 @@ D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\CharityTracker
 D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\obj\Debug\CharityTracker.csprojResolveAssemblyReference.cache
 D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\obj\Debug\CharityTracker.dll
 D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\obj\Debug\CharityTracker.pdb
+D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\EntityFramework.dll
+D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\EntityFramework.xml
