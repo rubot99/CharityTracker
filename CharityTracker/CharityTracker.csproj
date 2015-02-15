@@ -654,6 +654,7 @@
     <Content Include="assets\js\plugins\typehead\typeahead.bundle.js" />
     <Content Include="assets\js\plugins\underscore\underscore-min.js" />
     <Content Include="Default.aspx" />
+    <Content Include="User\YourActivities.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -724,6 +725,13 @@
     </Compile>
     <Compile Include="UsersOpenAuthData.cs">
       <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User\YourActivities.aspx.cs">
+      <DependentUpon>YourActivities.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\YourActivities.aspx.designer.cs">
+      <DependentUpon>YourActivities.aspx</DependentUpon>
     </Compile>
     <Compile Include="vwActivitiesByType.cs">
       <DependentUpon>CharityTracker.tt</DependentUpon>
