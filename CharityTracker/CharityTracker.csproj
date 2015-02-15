@@ -64,6 +64,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AddUsers.aspx" />
     <Content Include="assets\css\app\app.v1.css" />
     <Content Include="assets\css\app\email.css" />
     <Content Include="assets\css\app\timeline.css" />
@@ -661,6 +662,13 @@
     </Compile>
     <Compile Include="ActivityType.cs">
       <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddUsers.aspx.cs">
+      <DependentUpon>AddUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddUsers.aspx.designer.cs">
+      <DependentUpon>AddUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Application.cs">
       <DependentUpon>CharityTracker.tt</DependentUpon>
