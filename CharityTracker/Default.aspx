@@ -29,4 +29,43 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="row">
+        <div class="col-lg-12">                
+            <div class="panel panel-default">
+                <div class="panel-heading clean">Total Activities<div class="pull-right"></div></div>
+                <div class="panel-body">
+                    <div>
+                        <asp:Repeater ID="ActivitiesRepeater" runat="server">
+                            <HeaderTemplate>
+                                <table class="table no-margn">
+                                <thead>
+                                <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Total Mileage</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <tr class="active">
+                                <td><%# Eval("RowNumber")%></td>
+                                <td><%# Eval("Username")%></td>
+                                <td><%# Eval("TotalMileage")%></td>
+                                </tr>
+                            </ItemTemplate>
+                            <AlternatingItemTemplate>
+                                <tr class="warning">
+                                <td><%# Eval("RowNumber")%></td>
+                                <td><%# Eval("Username")%></td>
+                                <td><%# Eval("TotalMileage")%></td>
+                                </tr>
+                            </AlternatingItemTemplate>
+                            <FooterTemplate></tbody></table></FooterTemplate>
+                        </asp:Repeater>
+                    </div>
+                </div>
+            </div>
+        </div>               
+    </div> 
 </asp:Content>
