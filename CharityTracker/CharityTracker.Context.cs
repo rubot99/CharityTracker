@@ -27,10 +27,10 @@ namespace CharityTracker
     
         public DbSet<ActivityType> ActivityTypes { get; set; }
         public DbSet<Office> Offices { get; set; }
-        public DbSet<vwActivity> vwActivities { get; set; }
         public DbSet<vwActivitiesByType> vwActivitiesByTypes { get; set; }
         public DbSet<vwActivitiesByUser> vwActivitiesByUsers { get; set; }
         public DbSet<vwGetUser> vwGetUsers { get; set; }
         public DbSet<Activity> Activities { get; set; }
+        public DbSet<vwActivity> vwActivities { get; set; }
     }
 }

@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CharityTrackerModelStoreContainer" CdmEntityContainer="CharityTrackerEntities">
-    <EntitySetMapping Name="Activities">
-      <EntityTypeMapping TypeName="CharityTrackerModel.Activity">
-        <MappingFragment StoreEntitySet="Activities">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ActivityTypes">
       <EntityTypeMapping TypeName="CharityTrackerModel.ActivityType">
         <MappingFragment StoreEntitySet="ActivityTypes">
@@ -34,17 +22,6 @@
           <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="vwActivities">
-      <EntityTypeMapping TypeName="CharityTrackerModel.vwActivity">
-        <MappingFragment StoreEntitySet="vwActivities">
-          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
-          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-          <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -76,6 +53,30 @@
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="RoleName" ColumnName="RoleName" />
           <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Activities">
+      <EntityTypeMapping TypeName="CharityTrackerModel.Activity">
+        <MappingFragment StoreEntitySet="Activities">
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwActivities">
+      <EntityTypeMapping TypeName="CharityTrackerModel.vwActivity">
+        <MappingFragment StoreEntitySet="vwActivities">
+          <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

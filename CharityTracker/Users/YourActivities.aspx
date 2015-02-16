@@ -37,6 +37,24 @@
                             </div>
                         </td>
                     </tr>
+                    <tr><td>&nbsp;</td></tr> 
+                    <tr>
+                        <td>
+                            <label class="col-sm-2 control-label">Activity Date:</label>
+                            <div class="col-sm-7">
+                                <asp:Calendar ID="dtActivityDate" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px">
+                                    <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                                    <NextPrevStyle VerticalAlign="Bottom" />
+                                    <OtherMonthDayStyle ForeColor="#808080" />
+                                    <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                                    <SelectorStyle BackColor="#CCCCCC" />
+                                    <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                                    <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                                    <WeekendDayStyle BackColor="#FFFFCC" />
+                                </asp:Calendar>
+                            </div>
+                        </td>
+                    </tr>
                     <tr><td>&nbsp;</td></tr>                   
                     <tr>
                         <td>
@@ -97,7 +115,7 @@
                                         <th>#</th>
                                         <th>Activity Type</th>
                                         <th>Mileage</th>
-                                        <th>Date Added</th>
+                                        <th>Activity Date</th>
                                     </tr>
                                     </thead>
                                 <tbody>
@@ -107,7 +125,7 @@
                                     <td><%# Eval("RowNumber")%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("Mileage")%></td>
-                                    <td><%# Eval("LastUpdated")%></td>
+                                    <td><%# Eval("DateAdded")%></td>
                                 </tr>
                             </ItemTemplate>
                             <AlternatingItemTemplate>
@@ -115,7 +133,7 @@
                                     <td><%# Eval("RowNumber")%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("Mileage")%></td>
-                                    <td><%# Eval("LastUpdated")%></td>
+                                    <td><%# Eval("DateAdded")%></td>
                                 </tr>
                             </AlternatingItemTemplate>
                             <FooterTemplate></tbody></table></FooterTemplate>

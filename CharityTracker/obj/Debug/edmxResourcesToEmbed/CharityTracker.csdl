@@ -1,21 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="CharityTrackerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-  <EntityType Name="Activity">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ActivityTypeId" Type="Int32" Nullable="false" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Mileage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="UserId" Type="Guid" Nullable="false" />
-  </EntityType>
+<Schema Namespace="CharityTrackerModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
   <EntityType Name="ActivityType">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="ActivityType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
@@ -24,7 +13,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Name="Office1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Mileage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="MileageCompleted" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
@@ -32,19 +21,6 @@
     <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
-  <EntityType Name="vwActivity">
-    <Key>
-      <PropertyRef Name="UserId" />
-      <PropertyRef Name="Mileage" />
-      <PropertyRef Name="LastUpdated" />
-      <PropertyRef Name="ActivityType" />
-    </Key>
-    <Property Name="RowNumber" Type="Int64" />
-    <Property Name="UserId" Type="Guid" Nullable="false" />
-    <Property Name="Mileage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ActivityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="vwActivitiesByType">
     <Key>
@@ -80,13 +56,38 @@
     <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
-  <EntityContainer Name="CharityTrackerEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Activities" EntityType="Self.Activity" />
+  <EntityContainer Name="CharityTrackerEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
     <EntitySet Name="ActivityTypes" EntityType="Self.ActivityType" />
     <EntitySet Name="Offices" EntityType="Self.Office" />
-    <EntitySet Name="vwActivities" EntityType="Self.vwActivity" />
     <EntitySet Name="vwActivitiesByTypes" EntityType="Self.vwActivitiesByType" />
     <EntitySet Name="vwActivitiesByUsers" EntityType="Self.vwActivitiesByUser" />
     <EntitySet Name="vwGetUsers" EntityType="Self.vwGetUser" />
+    <EntitySet Name="Activities" EntityType="CharityTrackerModel.Activity" />
+    <EntitySet Name="vwActivities" EntityType="CharityTrackerModel.vwActivity" />
   </EntityContainer>
+  <EntityType Name="Activity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityTypeId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Mileage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="vwActivity">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="Mileage" />
+      <PropertyRef Name="DateAdded" />
+      <PropertyRef Name="ActivityType" />
+    </Key>
+    <Property Name="RowNumber" Type="Int64" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Mileage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ActivityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

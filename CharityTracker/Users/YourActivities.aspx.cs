@@ -38,6 +38,7 @@ namespace CharityTracker.User
                         ActivityTypeId = Convert.ToInt32(ddlActivityType.SelectedItem.Value),
                         IsActive = true,
                         LastUpdated = DateTime.Now,
+                        DateAdded = dtActivityDate.SelectedDate,
                         Mileage = mileage
                     });
 
@@ -60,6 +61,8 @@ namespace CharityTracker.User
                     SetupForm(new Guid(user.ProviderUserKey.ToString()));
                 }
             }
+
+            dtActivityDate.SelectedDate = DateTime.Today;
         }
 
         private void SetupForm(Guid userId)

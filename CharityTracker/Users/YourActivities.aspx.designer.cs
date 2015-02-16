@@ -40,6 +40,15 @@ namespace CharityTracker.User {
         protected global::System.Web.UI.WebControls.DropDownList ddlActivityType;
         
         /// <summary>
+        /// dtActivityDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Calendar dtActivityDate;
+        
+        /// <summary>
         /// btnAddMileage control.
         /// </summary>
         /// <remarks>

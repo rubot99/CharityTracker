@@ -49,7 +49,7 @@ namespace CharityTracker
             {
                 return _context.vwActivities
                     .Where(u => u.UserId == userId)
-                    .OrderByDescending(u => u.LastUpdated)
+                    .OrderByDescending(u => u.DateAdded)
                     .ToList<vwActivity>();
             }
         }

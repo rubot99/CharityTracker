@@ -17,7 +17,7 @@ namespace CharityTracker
         public Nullable<long> RowNumber { get; set; }
         public System.Guid UserId { get; set; }
         public decimal Mileage { get; set; }
-        public System.DateTime LastUpdated { get; set; }
+        public System.DateTime DateAdded { get; set; }
         public string ActivityType { get; set; }
     }
 }

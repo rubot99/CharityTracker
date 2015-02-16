@@ -45,13 +45,13 @@ warning 6002: The table/view 'CharityTracker.dbo.vwActivities' does not have a p
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="Mileage" />
-            <PropertyRef Name="LastUpdated" />
+            <PropertyRef Name="DateAdded" />
             <PropertyRef Name="ActivityType" />
           </Key>
           <Property Name="RowNumber" Type="bigint" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Mileage" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
           <Property Name="ActivityType" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -103,7 +103,7 @@ warning 6002: The table/view 'CharityTracker.dbo.vwGetUsers' does not have a pri
 [vwActivities].[RowNumber] AS [RowNumber], 
 [vwActivities].[UserId] AS [UserId], 
 [vwActivities].[Mileage] AS [Mileage], 
-[vwActivities].[LastUpdated] AS [LastUpdated], 
+[vwActivities].[DateAdded] AS [DateAdded], 
 [vwActivities].[ActivityType] AS [ActivityType]
 FROM [dbo].[vwActivities] AS [vwActivities]</DefiningQuery>
           </EntitySet>
@@ -159,19 +159,6 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="vwActivity">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="Mileage" />
-            <PropertyRef Name="LastUpdated" />
-            <PropertyRef Name="ActivityType" />
-          </Key>
-          <Property Name="RowNumber" Type="Int64" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="Mileage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ActivityType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="vwActivitiesByType">
           <Key>
             <PropertyRef Name="UserName" />
@@ -209,11 +196,11 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
         <EntityContainer Name="CharityTrackerEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="ActivityTypes" EntityType="Self.ActivityType" />
           <EntitySet Name="Offices" EntityType="Self.Office" />
-          <EntitySet Name="vwActivities" EntityType="Self.vwActivity" />
           <EntitySet Name="vwActivitiesByTypes" EntityType="Self.vwActivitiesByType" />
           <EntitySet Name="vwActivitiesByUsers" EntityType="Self.vwActivitiesByUser" />
           <EntitySet Name="vwGetUsers" EntityType="Self.vwGetUser" />
           <EntitySet Name="Activities" EntityType="CharityTrackerModel.Activity" />
+          <EntitySet Name="vwActivities" EntityType="CharityTrackerModel.vwActivity" />
           </EntityContainer>
         <EntityType Name="Activity">
           <Key>
@@ -226,6 +213,19 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           <Property Name="Mileage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vwActivity">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="Mileage" />
+            <PropertyRef Name="DateAdded" />
+            <PropertyRef Name="ActivityType" />
+          </Key>
+          <Property Name="RowNumber" Type="Int64" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Mileage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ActivityType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -254,17 +254,6 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
                 <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwActivities">
-            <EntityTypeMapping TypeName="CharityTrackerModel.vwActivity">
-              <MappingFragment StoreEntitySet="vwActivities">
-                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
-                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-                <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -309,6 +298,17 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwActivities">
+            <EntityTypeMapping TypeName="CharityTrackerModel.vwActivity">
+              <MappingFragment StoreEntitySet="vwActivities">
+                <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
