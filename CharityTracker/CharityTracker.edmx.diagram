@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1de724508f56441dae3109f624347391" Name="Diagram1">
-        <EntityTypeShape EntityType="CharityTrackerModel.Activity" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CharityTrackerModel.ActivityType" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CharityTrackerModel.Office" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CharityTrackerModel.vwActivity" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CharityTrackerModel.vwActivitiesByType" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CharityTrackerModel.vwActivitiesByUser" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CharityTrackerModel.vwGetUser" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CharityTrackerModel.Activity" Width="1.5" PointX="0.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

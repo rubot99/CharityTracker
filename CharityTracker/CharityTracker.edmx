@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CharityTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="CharityTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activities">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,6 +15,7 @@
           <Property Name="LastUpdated" Type="datetime" Nullable="false" />
           <Property Name="Mileage" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="ActivityTypes">
           <Key>
@@ -131,28 +132,16 @@ FROM [dbo].[vwActivitiesByUser] AS [vwActivitiesByUser]</DefiningQuery>
 [vwGetUsers].[LastActivityDate] AS [LastActivityDate]
 FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           </EntitySet>
-          </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CharityTrackerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityType Name="Activity">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ActivityTypeId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Mileage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-        </EntityType>
+      <Schema Namespace="CharityTrackerModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityType Name="ActivityType">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ActivityType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
@@ -161,7 +150,7 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Office1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Mileage" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="MileageCompleted" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
@@ -217,33 +206,33 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
           <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityContainer Name="CharityTrackerEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Activities" EntityType="Self.Activity" />
+        <EntityContainer Name="CharityTrackerEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="ActivityTypes" EntityType="Self.ActivityType" />
           <EntitySet Name="Offices" EntityType="Self.Office" />
           <EntitySet Name="vwActivities" EntityType="Self.vwActivity" />
           <EntitySet Name="vwActivitiesByTypes" EntityType="Self.vwActivitiesByType" />
           <EntitySet Name="vwActivitiesByUsers" EntityType="Self.vwActivitiesByUser" />
           <EntitySet Name="vwGetUsers" EntityType="Self.vwGetUser" />
+          <EntitySet Name="Activities" EntityType="CharityTrackerModel.Activity" />
           </EntityContainer>
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActivityTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Mileage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CharityTrackerModelStoreContainer" CdmEntityContainer="CharityTrackerEntities">
-          <EntitySetMapping Name="Activities">
-            <EntityTypeMapping TypeName="CharityTrackerModel.Activity">
-              <MappingFragment StoreEntitySet="Activities">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ActivityTypes">
             <EntityTypeMapping TypeName="CharityTrackerModel.ActivityType">
               <MappingFragment StoreEntitySet="ActivityTypes">
@@ -310,27 +299,40 @@ FROM [dbo].[vwGetUsers] AS [vwGetUsers]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="CharityTrackerModel.Activity">
+              <MappingFragment StoreEntitySet="Activities">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Mileage" ColumnName="Mileage" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ActivityTypeId" ColumnName="ActivityTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-      </DesignerInfoPropertySet>
-    </Options>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="true" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+    <edmx:Diagrams />
+  </edmx:Designer>
 </edmx:Edmx>

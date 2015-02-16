@@ -20,5 +20,6 @@ namespace CharityTracker
         public System.DateTime LastUpdated { get; set; }
         public decimal Mileage { get; set; }
         public System.Guid UserId { get; set; }
+        public System.DateTime DateAdded { get; set; }
     }
 }

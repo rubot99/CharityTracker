@@ -73,7 +73,7 @@
         <nav class="navigation">
             <ul class="list-unstyled">                    
                 <li class="active"><a href="/Default.aspx"><i class="fa fa-home"></i><span class="nav-label">Home</span></a></li>
-                <li class="has-submenu"><asp:HyperLink ID="lnkYourActivities" NavigateUrl="/User/YourActivities.aspx" runat="server" Visible="false"><i class="fa fa-heart"></i> <span class="nav-label">Your Activies</span></asp:HyperLink></li>                    
+                <li class="has-submenu"><asp:HyperLink ID="lnkYourActivities" NavigateUrl="/Users/YourActivities.aspx" runat="server" Visible="false"><i class="fa fa-heart"></i> <span class="nav-label">Your Activies</span></asp:HyperLink></li>                    
                 <li class="has-submenu"><asp:HyperLink ID="lnkAddUsers" NavigateUrl="/Admin/AddUsers.aspx" runat="server" Visible="false"><i class="fa fa-user"></i> <span class="nav-label">Add Users</span></asp:HyperLink></li>                   
             </ul>
         </nav>            
@@ -87,7 +87,7 @@
                 <section id="login">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
-                            <span><a id="loginLink" runat="server" href="~/Account/Login">Log in</a></span>
+                            <span><a id="loginLink" runat="server" href="~/Login.aspx">Log in</a></span>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <p>Hello, <asp:LoginName runat="server" CssClass="username" />!  <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" /></p>
