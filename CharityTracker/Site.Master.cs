@@ -76,6 +76,7 @@ namespace CharityTracker
                 {
                     lnkAddUsers.Visible = true;
                     lnkYourActivities.Visible = true;
+                    lnkAddActivityForUsers.Visible = true;
                 }
                 else if (lstRoles.Exists(r => r == "User"))
                 {

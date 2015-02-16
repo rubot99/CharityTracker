@@ -7,63 +7,54 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CharityTracker {
+namespace CharityTracker.Admin {
     
     
-    public partial class Site {
+    public partial class AddActivityForUsers {
         
         /// <summary>
-        /// HeadContent control.
+        /// txtMileage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+        protected global::System.Web.UI.WebControls.TextBox txtMileage;
         
         /// <summary>
-        /// lnkYourActivities control.
+        /// ddlActivityType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkYourActivities;
+        protected global::System.Web.UI.WebControls.DropDownList ddlActivityType;
         
         /// <summary>
-        /// lnkAddUsers control.
+        /// dtActivityDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkAddUsers;
+        protected global::System.Web.UI.WebControls.Calendar dtActivityDate;
         
         /// <summary>
-        /// lnkAddActivityForUsers control.
+        /// btnAddMileage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkAddActivityForUsers;
+        protected global::System.Web.UI.WebControls.Button btnAddMileage;
         
         /// <summary>
-        /// FeaturedContent control.
+        /// ActivitiesRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder FeaturedContent;
-        
-        /// <summary>
-        /// MainContent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.Repeater ActivitiesRepeater;
     }
 }

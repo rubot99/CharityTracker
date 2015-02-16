@@ -70,6 +70,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\AddActivityForUsers.aspx" />
     <Content Include="Admin\AddUsers.aspx" />
     <Content Include="assets\css\app\app.v1.css" />
     <Content Include="assets\css\app\email.css" />
@@ -670,6 +671,13 @@
     </Compile>
     <Compile Include="ActivityType.cs">
       <DependentUpon>CharityTracker.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddActivityForUsers.aspx.cs">
+      <DependentUpon>AddActivityForUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddActivityForUsers.aspx.designer.cs">
+      <DependentUpon>AddActivityForUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AddUsers.aspx.cs">
       <DependentUpon>AddUsers.aspx</DependentUpon>
