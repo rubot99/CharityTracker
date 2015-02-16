@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="CharityTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+<Schema Namespace="CharityTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Activities">
     <Key>
       <PropertyRef Name="Id" />
@@ -10,6 +10,7 @@
     <Property Name="LastUpdated" Type="datetime" Nullable="false" />
     <Property Name="Mileage" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateAdded" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="ActivityTypes">
     <Key>
@@ -39,13 +40,13 @@ warning 6002: The table/view 'CharityTracker.dbo.vwActivities' does not have a p
     <Key>
       <PropertyRef Name="UserId" />
       <PropertyRef Name="Mileage" />
-      <PropertyRef Name="LastUpdated" />
+      <PropertyRef Name="DateAdded" />
       <PropertyRef Name="ActivityType" />
     </Key>
     <Property Name="RowNumber" Type="bigint" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Mileage" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+    <Property Name="DateAdded" Type="datetime" Nullable="false" />
     <Property Name="ActivityType" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -97,7 +98,7 @@ warning 6002: The table/view 'CharityTracker.dbo.vwGetUsers' does not have a pri
 [vwActivities].[RowNumber] AS [RowNumber], 
 [vwActivities].[UserId] AS [UserId], 
 [vwActivities].[Mileage] AS [Mileage], 
-[vwActivities].[LastUpdated] AS [LastUpdated], 
+[vwActivities].[DateAdded] AS [DateAdded], 
 [vwActivities].[ActivityType] AS [ActivityType]
 FROM [dbo].[vwActivities] AS [vwActivities]</DefiningQuery>
     </EntitySet>

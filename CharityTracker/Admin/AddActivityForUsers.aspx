@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AddActivityForUsers.aspx.cs" Inherits="CharityTracker.Admin.AddActivityForUsers" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeBehind="AddActivityForUsers.aspx.cs" Inherits="CharityTracker.Admin.AddActivityForUsers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="FeaturedContent" runat="server">
@@ -9,7 +9,16 @@
         <div class="panel panel-default" data-ng-controller="TodoCtrl">
             <div class="panel-heading un-bold"><h4>Add Mileage</h4></div>
             <div class="panel-body">
-                <table class="col-sm-6">                                
+                <table class="col-sm-6">    
+                    <tr>
+                        <td>
+                            <label class="col-sm-2 control-label">User:</label>
+                            <div class="col-sm-7">
+                                <asp:DropDownList ID="ddlUsers" runat="server" CssClass="form-control chosen-select" AutoPostBack="True"></asp:DropDownList>   
+                            </div>     
+                        </td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>                            
                     <tr>
                         <td>
                             <label class="col-sm-2 control-label">Mileage:</label>
@@ -82,7 +91,7 @@
                                     <td><%# Eval("RowNumber")%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("Mileage")%></td>
-                                    <td><%# Eval("DateAdded")%></td>
+                                    <td><%# DataBinder.Eval(Container.DataItem, "DateAdded", "{0:D}")%></td>
                                 </tr>
                             </ItemTemplate>
                             <AlternatingItemTemplate>
@@ -90,7 +99,7 @@
                                     <td><%# Eval("RowNumber")%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("Mileage")%></td>
-                                    <td><%# Eval("DateAdded")%></td>
+                                    <td><%# DataBinder.Eval(Container.DataItem, "DateAdded", "{0:D}")%></td>
                                 </tr>
                             </AlternatingItemTemplate>
                             <FooterTemplate></tbody></table></FooterTemplate>

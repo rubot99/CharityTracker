@@ -60,9 +60,7 @@ namespace CharityTracker.User
                     MembershipUser user = Membership.GetUser(username);
                     SetupForm(new Guid(user.ProviderUserKey.ToString()));
                 }
-            }
-
-            dtActivityDate.SelectedDate = DateTime.Today;
+            }            
         }
 
         private void SetupForm(Guid userId)
@@ -70,6 +68,8 @@ namespace CharityTracker.User
             FillActivityTypes();
             ActivitiesByType(userId);
             Activities(userId);
+
+            dtActivityDate.SelectedDate = DateTime.Today;
         }
 
         private void FillActivityTypes()

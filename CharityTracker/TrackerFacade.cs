@@ -53,7 +53,7 @@ namespace CharityTracker
                     .ToList<vwActivity>();
             }
         }
-
+        
         public List<vwActivitiesByType> GetActivitiesByType()
         {
             using (CharityTrackerEntities _context = new CharityTrackerEntities())
