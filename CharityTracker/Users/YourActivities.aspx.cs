@@ -21,35 +21,53 @@ namespace CharityTracker.User
 
         void btnAddMileage_Click(object sender, EventArgs e)
         {
-            decimal mileage = 0;
-
-            if (!string.IsNullOrEmpty(txtMileage.Text))
+            try
             {
-                if (Decimal.TryParse(txtMileage.Text, out mileage))
+                decimal mileage = 0;
+
+                lblUserError.Visible = false;
+
+                if (!string.IsNullOrEmpty(txtMileage.Text))
                 {
-                    var username = System.Web.HttpContext.Current.User.Identity.Name;
-                    MembershipUser user = Membership.GetUser(username);
-
-                    var userId = new Guid(user.ProviderUserKey.ToString());
-
-                    _facade.AddActivity(new Activity()
+                    if (Decimal.TryParse(txtMileage.Text, out mileage))
                     {
-                        UserId = userId,
-                        ActivityTypeId = Convert.ToInt32(ddlActivityType.SelectedItem.Value),
-                        IsActive = true,
-                        LastUpdated = DateTime.Now,
-                        DateAdded = dtActivityDate.SelectedDate,
-                        Mileage = mileage
-                    });
+                        var username = System.Web.HttpContext.Current.User.Identity.Name;
+                        MembershipUser user = Membership.GetUser(username);
 
-                    ActivitiesByType(userId);
-                    Activities(userId);
+                        var userId = new Guid(user.ProviderUserKey.ToString());
 
-                    txtMileage.Text = string.Empty;
+                        _facade.AddActivity(new Activity()
+                        {
+                            UserId = userId,
+                            ActivityTypeId = Convert.ToInt32(ddlActivityType.SelectedItem.Value),
+                            IsActive = true,
+                            LastUpdated = DateTime.Now,
+                            DateAdded = dtActivityDate.SelectedDate,
+                            Mileage = mileage
+                        });
+
+                        ActivitiesByType(userId);
+                        Activities(userId);
+
+                        txtMileage.Text = string.Empty;
+                    }
+                    else
+                    {
+                        throw new ApplicationException("Mileage needs to be a numeric value.");
+                    }
+                }
+                else 
+                {
+                    throw new ApplicationException("Mileage is a required field.");
                 }
             }
+            catch(Exception exc)
+            {
+                lblUserError.Text = exc.Message;
+                lblUserError.Visible = true;
+            }
         }
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)

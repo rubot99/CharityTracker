@@ -84,7 +84,6 @@
       <PropertyRef Name="DateAdded" />
       <PropertyRef Name="ActivityType" />
     </Key>
-    <Property Name="RowNumber" Type="Int64" />
     <Property Name="UserId" Type="Guid" Nullable="false" />
     <Property Name="Mileage" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="DateAdded" Type="DateTime" Nullable="false" Precision="3" />

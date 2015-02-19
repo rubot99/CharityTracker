@@ -18,9 +18,11 @@
     <div class="row">
         <div class="panel panel-default" data-ng-controller="TodoCtrl">
             <div class="panel-heading un-bold"><h4>Add Mileage</h4></div>
+            <div class="panel-body"><asp:Label ID="lblUserError" runat="server" Text="" Visible="false" CssClass="bg-danger padd-sm text-white"></asp:Label></div>
             <div class="panel-body">
-                <table class="col-sm-6">                                
+                <table class="col-sm-6">                              
                     <tr>
+                        
                         <td>
                             <label class="col-sm-2 control-label">Mileage:</label>
                             <div class="col-sm-7">
@@ -88,14 +90,14 @@
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <tr class="active">
-                                    <td><%# Eval("RowNumber")%></td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("TotalMileage")%></td>
                                 </tr>
                             </ItemTemplate>
                             <AlternatingItemTemplate>
                                 <tr class="warning">
-                                    <td><%# Eval("RowNumber")%></td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("TotalMileage")%></td>
                                 </tr>
@@ -122,7 +124,7 @@
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <tr class="active">
-                                    <td><%# Eval("RowNumber")%></td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("Mileage")%></td>
                                     <td><%# DataBinder.Eval(Container.DataItem, "DateAdded", "{0:D}")%></td>
@@ -130,7 +132,7 @@
                             </ItemTemplate>
                             <AlternatingItemTemplate>
                                 <tr class="warning">
-                                    <td><%# Eval("RowNumber")%></td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("Mileage")%></td>
                                     <td><%# DataBinder.Eval(Container.DataItem, "DateAdded", "{0:D}")%></td>
