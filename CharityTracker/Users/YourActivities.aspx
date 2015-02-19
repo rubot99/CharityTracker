@@ -88,14 +88,14 @@
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <tr class="active">
-                                    <td><%# Eval("RowNumber")%></td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("TotalMileage")%></td>
                                 </tr>
                             </ItemTemplate>
                             <AlternatingItemTemplate>
                                 <tr class="warning">
-                                    <td><%# Eval("RowNumber")%></td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("TotalMileage")%></td>
                                 </tr>
@@ -122,7 +122,7 @@
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <tr class="active">
-                                    <td><%# Eval("RowNumber")%></td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("Mileage")%></td>
                                     <td><%# DataBinder.Eval(Container.DataItem, "DateAdded", "{0:D}")%></td>
@@ -130,7 +130,7 @@
                             </ItemTemplate>
                             <AlternatingItemTemplate>
                                 <tr class="warning">
-                                    <td><%# Eval("RowNumber")%></td>
+                                    <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                     <td><%# Eval("ActivityType")%></td>
                                     <td><%# Eval("Mileage")%></td>
                                     <td><%# DataBinder.Eval(Container.DataItem, "DateAdded", "{0:D}")%></td>

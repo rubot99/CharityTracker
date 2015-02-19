@@ -72,14 +72,14 @@
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr class="active">
-                                <td><%--<%# Eval("Id")%>--%></td>
+                                <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                 <td><%# Eval("UserName")%></td>
                                 <td><%# Eval("RoleName")%></td>
                             </tr>
                         </ItemTemplate>
                         <AlternatingItemTemplate>
                             <tr class="warning">
-                                <td><%--<%# Eval("Id")%>--%></td>
+                                <td><%#(((RepeaterItem)Container).ItemIndex+1).ToString()%></td>
                                 <td><%# Eval("UserName")%></td>
                                 <td><%# Eval("RoleName")%></td>
                             </tr>

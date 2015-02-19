@@ -76,7 +76,6 @@
           <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
           <ScalarProperty Name="Mileage" ColumnName="Mileage" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

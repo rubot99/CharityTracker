@@ -43,7 +43,6 @@ warning 6002: The table/view 'CharityTracker.dbo.vwActivities' does not have a p
       <PropertyRef Name="DateAdded" />
       <PropertyRef Name="ActivityType" />
     </Key>
-    <Property Name="RowNumber" Type="bigint" />
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Mileage" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="DateAdded" Type="datetime" Nullable="false" />
@@ -95,7 +94,6 @@ warning 6002: The table/view 'CharityTracker.dbo.vwGetUsers' does not have a pri
     <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vwActivities" EntityType="Self.vwActivities" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-[vwActivities].[RowNumber] AS [RowNumber], 
 [vwActivities].[UserId] AS [UserId], 
 [vwActivities].[Mileage] AS [Mileage], 
 [vwActivities].[DateAdded] AS [DateAdded], 

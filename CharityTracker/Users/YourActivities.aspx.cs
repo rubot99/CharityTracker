@@ -100,7 +100,8 @@ namespace CharityTracker.User
 
         private void Activities(Guid userId)
         {
-            ActivitiesRepeater.DataSource = _facade.GetActivities(userId);
+            List<vwActivity> lstActivities = _facade.GetActivities(userId);
+            ActivitiesRepeater.DataSource = lstActivities;
             ActivitiesRepeater.DataBind();
         }
     }

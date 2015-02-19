@@ -14,7 +14,6 @@ namespace CharityTracker
     
     public partial class vwActivity
     {
-        public Nullable<long> RowNumber { get; set; }
         public System.Guid UserId { get; set; }
         public decimal Mileage { get; set; }
         public System.DateTime DateAdded { get; set; }

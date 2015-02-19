@@ -9,4 +9,3 @@ D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\EntityFramewor
 D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\System.Web.Providers.dll
 D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\EntityFramework.SqlServer.xml
 D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\bin\System.Web.Providers.xml
-D:\Users\Helix\Documents\GitHub\CharityTracker\CharityTracker\obj\Debug\CharityTracker.csprojResolveAssemblyReference.cache
