@@ -73,6 +73,17 @@ namespace CharityTracker
             }
         }
 
+        public List<vwActivitiesByUser> GetActivitiesLeaderBoard()
+        {
+            using (CharityTrackerEntities _context = new CharityTrackerEntities())
+            {
+                return _context.vwActivitiesByUsers
+                    .Where(u => u.UserId != new Guid("B7D36A7B-B613-4CE6-998B-B22086A0347A"))
+                    .OrderByDescending(u => u.TotalMileage)
+                    .ToList<vwActivitiesByUser>();
+            }
+        }
+
         public List<vwActivitiesByType> GetActivitiesByTypeByUser(Guid userid)
         {
             using (CharityTrackerEntities _context = new CharityTrackerEntities())

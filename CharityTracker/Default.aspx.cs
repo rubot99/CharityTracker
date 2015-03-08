@@ -43,7 +43,7 @@ namespace CharityTracker
 
         private void FillActivitiesByUser()
         {
-            List<vwActivitiesByUser> lstActivitiesByUser = _facade.GetActivitiesByUser();
+            List<vwActivitiesByUser> lstActivitiesByUser = _facade.GetActivitiesLeaderBoard();
             ActivitiesRepeater.DataSource = lstActivitiesByUser;
             ActivitiesRepeater.DataBind();
 
